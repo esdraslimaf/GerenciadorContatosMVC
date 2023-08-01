@@ -5,7 +5,12 @@
 
 
 $(document).ready(function () {
-    $('#myTable').DataTable({
+    getDatatable('#myTable')
+    getDatatable('#myTableUsuario')
+});
+
+function getDatatable(id) {
+    $(id).DataTable({
         "ordering": true,
         "paging": true,
         "searching": true,
@@ -33,4 +38,4 @@ $(document).ready(function () {
             }
         }
     });
-});
+}

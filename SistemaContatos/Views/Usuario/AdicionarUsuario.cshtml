@@ -1,0 +1,50 @@
+﻿@using SistemaContatos.Enums
+@model Usuario
+
+@{
+    ViewData["Title"] = "Adicionar novo Usuario";
+}
+
+<div class="text-center">
+
+<h2 class="display-4">Cadastrar novo Usuario</h2>
+
+</div>
+
+<form asp-controller="Usuario" asp-action="AdicionarUsuario" method="post">
+  <div class="mb-3">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" id="nome" asp-for="Nome" class="form-control" placeholder="Insira o nome do Usuario">
+ <span asp-validation-for="Nome"></span>
+</div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">E-mail</label>
+    <input type="text" id="email" asp-for="Email" class="form-control" placeholder="Insira o e-mail do Usuario">
+    <span asp-validation-for="Email"></span>
+</div>
+
+  <div class="mb-3">
+    <label for="login" class="form-label">Login</label>
+    <input type="text" id="login" asp-for="Login" class="form-control" placeholder="Insira o login do Usuario">
+  <span asp-validation-for="Login"></span>
+</div>
+
+  <div class="mb-3">
+    <label for="perfil" class="form-label">Tipo de usuário</label>
+     <select id="perfil" asp-for="Perfil" class="form-control">
+    <option value="@PerfilEnum.Comum">Comum</option>
+    <option value="@PerfilEnum.Admin">Administrador</option>
+  </select>
+  <span asp-validation-for="Perfil"></span>
+</div>
+
+ <div class="mb-3">
+    <label for="senha" class="form-label">Senha</label>
+    <input type="password" id="senha" asp-for="Senha" class="form-control" placeholder="Insira a senha do Usuario">
+  <span asp-validation-for="Senha"></span>
+</div>
+
+  <button type="submit" class="btn btn-success">Confirmar</button>
+  <a class="btn btn-secondary" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
+</form>

@@ -15,6 +15,7 @@ namespace SistemaContatos
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ContactContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
             builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             var app = builder.Build();
 
