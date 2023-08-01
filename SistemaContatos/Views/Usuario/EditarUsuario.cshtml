@@ -1,5 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using SistemaContatos.Enums
+@model Usuario
+
 @{
+    ViewData["Title"] = "Editar Usuario";
 }
+
+<div class="text-center">
+
+<h2 class="display-4">Editar usuario</h2>
+
+</div>
+
+<form asp-controller="Usuario" asp-action="EditarUsuario" method="post">
+    <input type="hidden" asp-for="Id" />
+  <div class="mb-3">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" id="nome" asp-for="Nome" class="form-control" placeholder="Insira o nome do Usuario">
+ <span asp-validation-for="Nome"></span>
+</div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">E-mail</label>
+    <input type="text" id="email" asp-for="Email" class="form-control" placeholder="Insira o e-mail do Usuario">
+    <span asp-validation-for="Email"></span>
+</div>
+
+  <div class="mb-3">
+    <label for="login" class="form-label">Login</label>
+    <input type="text" id="login" asp-for="Login" class="form-control" placeholder="Insira o login do Usuario">
+  <span asp-validation-for="Login"></span>
+</div>
+
+  <div class="mb-3">
+    <label for="perfil" class="form-label">Tipo de usuário</label>
+     <select id="perfil" asp-for="Perfil" class="form-control">
+    <option value="@PerfilEnum.Comum">Comum</option>
+    <option value="@PerfilEnum.Admin">Administrador</option>
+  </select>
+  <span asp-validation-for="Perfil"></span>
+</div>
+
+ <div class="mb-3">
+    <label for="senha" class="form-label">Senha</label>
+    <input type="password" id="senha" asp-for="Senha" class="form-control" placeholder="Insira a nova senha do Usuario">
+  <span asp-validation-for="Senha"></span>
+</div>
+
+  <button type="submit" class="btn btn-success">Confirmar</button>
+  <a class="btn btn-secondary" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
+</form>

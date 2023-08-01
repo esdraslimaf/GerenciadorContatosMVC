@@ -16,7 +16,6 @@ namespace SistemaContatos.Models
         [Required(ErrorMessage = "Insira o e-mail do usuário!")]
         [EmailAddress(ErrorMessage = "O e-mail informado é inválido!")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Insira o tipo de perfil!")]
         public PerfilEnum Perfil { get; set; }
         [Required(ErrorMessage = "Insira a senha do usuário!")]
         public string Senha { get; set; }
