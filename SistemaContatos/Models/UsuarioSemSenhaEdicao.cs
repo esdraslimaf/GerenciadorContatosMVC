@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SistemaContatos.Models
 {
-    public class Usuario
+    public class UsuarioSemSenhaEdicao
     {
         public int Id { get; set; }
 
@@ -18,9 +18,6 @@ namespace SistemaContatos.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Escolha o tipo do usuário!")]
         public PerfilEnum? Perfil { get; set; }
-        [Required(ErrorMessage = "Insira a senha do usuário!")]
-        public string Senha { get; set; }
-        public DateTime DataCadastro { get; set; }
-        public DateTime? DataAtualizacao { get; set; }
+
     }
 }

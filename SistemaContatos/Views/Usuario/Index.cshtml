@@ -32,6 +32,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Login</th>
                 <th scope="col">Email</th>
+                <th scope="col">Tipo de usuário</th>
                 <th scope="col">Data de Cadastro</th>
                 <th scoped="col"></th>
             </tr>
@@ -46,6 +47,7 @@
                         <td>@item.Nome</td>
                         <td>@item.Login</td>
                         <td>@item.Email</td>
+                        <td>@(item.Perfil==SistemaContatos.Enums.PerfilEnum.Admin?"Administrador":"Comum")</td>
                         <td>@item.DataCadastro</td>
                         <td>
                             <div class="btn-group" role="group">

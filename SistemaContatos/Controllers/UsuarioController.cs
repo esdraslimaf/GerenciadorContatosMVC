@@ -49,16 +49,34 @@ namespace SistemaContatos.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditarUsuario(Usuario Usuario)
+        public IActionResult EditarUsuario(UsuarioSemSenhaEdicao usuarioSemSenhaEdicao)
         {
+            try { 
+            Usuario usuario = null;
             if (ModelState.IsValid)
             {
-                _repo.EditarUsuario(Usuario);
+                usuario = new Usuario()
+                {
+                    Id = usuarioSemSenhaEdicao.Id,
+                    Nome = usuarioSemSenhaEdicao.Nome,
+                    Email = usuarioSemSenhaEdicao.Email,
+                    Login = usuarioSemSenhaEdicao.Login,
+                    Perfil = usuarioSemSenhaEdicao.Perfil
+                    //DataAtualizacao = DateTime.Now - Ja é atualizado no _repo.EditarUsuario
+                };
+
+                _repo.EditarUsuario(usuario);
                 TempData["Sucesso"] = "Usuario editado com sucesso!";
                 return RedirectToAction("Index");
             }
-            return View(Usuario);
+            return View(usuario);
         }
+        catch(Exception erro)
+            {
+                TempData["Erro"] = $"Ocorreu um erro! Não foi possível atualizar o usuário. Detalhes: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+            }
 
         public IActionResult ExcluirUsuario(int id)
         {

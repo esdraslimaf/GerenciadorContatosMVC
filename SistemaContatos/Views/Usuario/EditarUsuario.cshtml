@@ -34,17 +34,13 @@
   <div class="mb-3">
     <label for="perfil" class="form-label">Tipo de usuário</label>
      <select id="perfil" asp-for="Perfil" class="form-control">
+    <option value="" disabled selected>Selecione</option>
     <option value="@PerfilEnum.Comum">Comum</option>
     <option value="@PerfilEnum.Admin">Administrador</option>
   </select>
   <span asp-validation-for="Perfil"></span>
 </div>
 
- <div class="mb-3">
-    <label for="senha" class="form-label">Senha</label>
-    <input type="password" id="senha" asp-for="Senha" class="form-control" placeholder="Insira a nova senha do Usuario">
-  <span asp-validation-for="Senha"></span>
-</div>
 
   <button type="submit" class="btn btn-success">Confirmar</button>
   <a class="btn btn-secondary" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
