@@ -28,6 +28,12 @@ namespace SistemaContatos.Repository
             return usuarioDB;
         }
 
+        public Usuario BuscarUsuarioPorLogin(string login)
+        {
+            //Jogar os dois para caixa alta para não ter diferenças de letra maiúsculas com minúsculas, etc.
+            return _db.Usuarios.FirstOrDefault(c => c.Login.ToUpper() == login.ToUpper()); // Obs: Temos que fazer uma validação, pois podem existir logins iguais.
+        }
+
         public List<Usuario> BuscarUsuarios()
         {
             return _db.Usuarios.ToList();

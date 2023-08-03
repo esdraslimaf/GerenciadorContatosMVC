@@ -10,7 +10,7 @@ namespace SistemaContatos.Models
         [Required(ErrorMessage = "Insira o nome do usuário!")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Insira o nome do usuário!")]
+        [Required(ErrorMessage = "Insira o login do usuário!")]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Insira o e-mail do usuário!")]
@@ -22,5 +22,11 @@ namespace SistemaContatos.Models
         public string Senha { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualizacao { get; set; }
+
+        public bool ValidaSenha(string senha)
+        {
+            if (senha == Senha) return true;
+            return false;
+        }
     }
 }
