@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaContatos.Data;
+using SistemaContatos.Helper;
 using SistemaContatos.Repository;
 using SistemaContatos.Repository.Interfaces;
 
@@ -16,6 +17,14 @@ namespace SistemaContatos
             builder.Services.AddDbContext<ContactContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
             builder.Services.AddScoped<IContatoRepository, ContatoRepository>();
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddScoped<ISessao, Sessao>();
+
+            builder.Services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -29,6 +38,8 @@ namespace SistemaContatos
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",

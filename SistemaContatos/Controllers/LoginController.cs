@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaContatos.Helper;
 using SistemaContatos.Models;
 using SistemaContatos.Repository.Interfaces;
 
@@ -7,14 +8,23 @@ namespace SistemaContatos.Controllers
     public class LoginController : Controller
     {
         private readonly IUsuarioRepository _repo;
-        public LoginController(IUsuarioRepository repo)
+        private readonly ISessao _sessao;
+        public LoginController(IUsuarioRepository repo, ISessao sessao)
         {
-            _repo = repo; 
+            _repo = repo;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
+            if (_sessao.BuscarSessaoUsuario() != null) return RedirectToAction("Index", "Home");
             return View();
+        }
+
+        public IActionResult Deslogar()
+        {
+            _sessao.RemoverSessaoUsuario();
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -29,6 +39,7 @@ namespace SistemaContatos.Controllers
                     {
                         if (userDb.ValidaSenha(conta.Senha))
                         {
+                            _sessao.CriarSessaoUsuario(userDb);
                             return RedirectToAction("Index", "Home");
                         }
                             TempData["Erro"] = "Senha inválida. Tente novamente!";
