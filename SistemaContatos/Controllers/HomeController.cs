@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaContatos.Filters;
 using SistemaContatos.Models;
 using System.Diagnostics;
 
 namespace SistemaContatos.Controllers
 {
+    [PaginasDisponiveisPosLogin]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

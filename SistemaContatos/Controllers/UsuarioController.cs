@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaContatos.Filters;
 using SistemaContatos.Models;
 using SistemaContatos.Repository.Interfaces;
 
 namespace SistemaContatos.Controllers
 {
+    [FiltroPaginaRestritaAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepository _repo;

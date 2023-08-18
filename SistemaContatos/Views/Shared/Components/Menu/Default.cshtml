@@ -13,9 +13,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contatos</a>
                         </li>
-                         <li class="nav-item">
+                        @if(Model.Perfil == SistemaContatos.Enums.PerfilEnum.Admin){
+                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuários</a>
                         </li>
+                        }
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Deslogar">Sair</a>
                         </li>
