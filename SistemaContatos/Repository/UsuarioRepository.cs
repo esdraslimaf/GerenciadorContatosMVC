@@ -16,6 +16,7 @@ namespace SistemaContatos.Repository
         public Usuario AddUsuario(Usuario usuario)
         {
             usuario.DataCadastro = DateTime.Now;
+            usuario.SetSenhaCriptografada();
             _db.Usuarios.Add(usuario);
             _db.SaveChanges();
             return usuario;

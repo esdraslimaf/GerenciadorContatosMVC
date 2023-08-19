@@ -1,4 +1,5 @@
 ﻿using SistemaContatos.Enums;
+using SistemaContatos.Helper;
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaContatos.Models
@@ -25,8 +26,12 @@ namespace SistemaContatos.Models
 
         public bool ValidaSenha(string senha)
         {
-            if (senha == Senha) return true;
-            return false;
+            return this.Senha == senha.GerarHash();
+        }
+
+        public void SetSenhaCriptografada()
+        {
+            this.Senha = this.Senha.GerarHash();
         }
     }
 }
