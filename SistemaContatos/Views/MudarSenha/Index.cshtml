@@ -1,0 +1,48 @@
+﻿@model MudarSenha
+@{
+    ViewData["Title"] = "Alterar senha";
+}
+
+<div class="text-center">
+
+<h2 class="display-4">Alterar senha</h2>
+
+</div>
+
+ @if(TempData["Sucesso"] != null){
+        <div class="alert alert-success" role="alert">
+        @TempData["Sucesso"]
+        </div>
+    }
+    else if(TempData["Erro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+        @TempData["Erro"]
+        </div>
+    }
+
+<form asp-controller="MudarSenha" asp-action="Alterar" method="post">
+
+  <div class="mb-3">
+    <label for="senhaatual" class="form-label">Senha atual</label>
+    <input type="password" id="senhaatual" asp-for="SenhaAtual" class="form-control" placeholder="Insira a senha do usuário">
+ <span asp-validation-for="SenhaAtual"></span>
+</div>
+
+ <div class="mb-3">
+    <label for="novasenha" class="form-label">Nova senha</label>
+    <input type="password" id="novasenha" asp-for="NovaSenha" class="form-control" placeholder="Insira a nova senha do usuário">
+ <span asp-validation-for="NovaSenha"></span>
+</div>
+
+ <div class="mb-3">
+    <label for="confirmarnovasenha" class="form-label">Confirme a nova senha</label>
+    <input type="password" id="confirmarnovasenha" asp-for="ConfirmarNovaSenha" class="form-control" placeholder="Confirme a nova senha do usuário">
+ <span asp-validation-for="ConfirmarNovaSenha"></span>
+</div>
+
+
+
+  <button type="submit" class="btn btn-success">Alterar</button>
+  <a class="btn btn-secondary" asp-controller="Home" asp-action="Index" role="button">Voltar</a>
+</form>

@@ -22,6 +22,22 @@ namespace SistemaContatos.Repository
             return usuario;
         }
 
+        public Usuario AlterarSenha(MudarSenha mudarSenhaModel)
+        {
+            Usuario userDb = BuscarUsuarioPorId(mudarSenhaModel.Id);
+            if (userDb == null) throw new Exception("Usuário não encontrado!");
+            else if (!userDb.ValidaSenha(mudarSenhaModel.SenhaAtual)) throw new Exception("As senhas são diferentes!");
+            else if (userDb.ValidaSenha(mudarSenhaModel.NovaSenha)) throw new Exception("A nova senha deve ser diferente da atual!");
+            else
+            {
+                userDb.SetSenhaNova(mudarSenhaModel.NovaSenha);
+                userDb.DataAtualizacao = DateTime.Now;
+                _db.Usuarios.Update(userDb);
+                _db.SaveChanges();
+                return userDb;
+            }
+        }
+
         public Usuario BuscarPorLoginAndEmail(string login, string email)
         {
             Usuario usuarioDB = _db.Usuarios.FirstOrDefault(c => c.Login.ToUpper() == login.ToUpper() && c.Email.ToUpper() == email.ToUpper());

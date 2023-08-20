@@ -40,5 +40,10 @@ namespace SistemaContatos.Models
             this.Senha = novaSenha.GerarHash();
             return novaSenha;
         }
+
+        public void SetSenhaNova(string novaSenha)
+        {
+            this.Senha = novaSenha.GerarHash();
+        }
     }
 }

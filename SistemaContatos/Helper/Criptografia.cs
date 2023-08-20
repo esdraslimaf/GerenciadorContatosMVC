@@ -5,7 +5,7 @@ namespace SistemaContatos.Helper
 {
     public static class Criptografia
     {
-        public static string GerarHash(this string senha)
+        public static string GerarHash(this string senha) //Extension
         {
             var hash = SHA1.Create();
             var encoding = new ASCIIEncoding();

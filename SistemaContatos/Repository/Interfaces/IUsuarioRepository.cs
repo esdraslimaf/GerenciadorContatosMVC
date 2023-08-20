@@ -11,5 +11,6 @@ namespace SistemaContatos.Repository.Interfaces
         bool ExcluirUsuario(int id);
         Usuario BuscarUsuarioPorLogin(string login);
         Usuario BuscarPorLoginAndEmail(string login, string email);
+        Usuario AlterarSenha(MudarSenha mudarSenhaModel);
     }
 }
