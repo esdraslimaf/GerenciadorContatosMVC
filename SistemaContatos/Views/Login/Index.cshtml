@@ -12,6 +12,11 @@
         </div>
     }
 
+@if(TempData["Sucesso"] != null){
+        <div class="alert alert-success" role="alert">
+        @TempData["Sucesso"]
+        </div> 
+}
 
 <form asp-controller="Login" asp-action="RealizarLogin" method="post">
   <div class="mb-3">
@@ -25,4 +30,7 @@
   <span asp-validation-for="Senha"></span>
 </div>
   <button type="submit" class="btn btn-primary">Entrar</button>
+  <p>Esqueceu sua senha? 
+    <a asp-action="RedefinirSenha" asp-controller="Login" class="text-primary text-gradient font-weight-bold">Redefinir senha!</a>
+  </p>
 </form>

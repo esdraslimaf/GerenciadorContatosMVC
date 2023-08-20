@@ -16,10 +16,17 @@ namespace SistemaContatos.Repository
         public Usuario AddUsuario(Usuario usuario)
         {
             usuario.DataCadastro = DateTime.Now;
-            usuario.SetSenhaCriptografada();
+            usuario.SetSenhaCriptografada(); //Transforma a senha do usuário em hash
             _db.Usuarios.Add(usuario);
             _db.SaveChanges();
             return usuario;
+        }
+
+        public Usuario BuscarPorLoginAndEmail(string login, string email)
+        {
+            Usuario usuarioDB = _db.Usuarios.FirstOrDefault(c => c.Login.ToUpper() == login.ToUpper() && c.Email.ToUpper() == email.ToUpper());
+            if (usuarioDB == null) throw new Exception("Dados inválidos!");
+            return usuarioDB;
         }
 
         public Usuario BuscarUsuarioPorId(int id)

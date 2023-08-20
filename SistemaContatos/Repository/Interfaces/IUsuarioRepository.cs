@@ -10,5 +10,6 @@ namespace SistemaContatos.Repository.Interfaces
         void EditarUsuario(Usuario usuario);
         bool ExcluirUsuario(int id);
         Usuario BuscarUsuarioPorLogin(string login);
+        Usuario BuscarPorLoginAndEmail(string login, string email);
     }
 }
