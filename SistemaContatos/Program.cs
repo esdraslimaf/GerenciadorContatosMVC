@@ -19,6 +19,7 @@ namespace SistemaContatos
             builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddScoped<ISessao, Sessao>();
+            builder.Services.AddScoped<IEmail, Email>();
 
             builder.Services.AddSession(o =>
             {

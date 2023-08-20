@@ -33,5 +33,12 @@ namespace SistemaContatos.Models
         {
             this.Senha = this.Senha.GerarHash();
         }
+
+        public string GerarNovaSenha()
+        {
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
+            this.Senha = novaSenha.GerarHash();
+            return novaSenha;
+        }
     }
 }
