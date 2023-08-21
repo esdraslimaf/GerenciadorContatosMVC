@@ -4,8 +4,8 @@ namespace SistemaContatos.Repository.Interfaces
 {
     public interface IContatoRepository
     {
-        Contato AddContato(Contato Contato);
-        List<Contato> BuscarContatos();
+        Contato AddContato(Contato contato);
+        List<Contato> BuscarContatos(int usuarioId);
         Contato BuscarContatoPorId(int id);
         void EditarContato(Contato contato);
         bool ExcluirContato(int id);

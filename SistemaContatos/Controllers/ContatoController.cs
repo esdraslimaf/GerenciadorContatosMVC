@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaContatos.Filters;
+using SistemaContatos.Helper;
 using SistemaContatos.Models;
 using SistemaContatos.Repository.Interfaces;
 
@@ -9,13 +10,15 @@ namespace SistemaContatos.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepository _repo;
-        public ContatoController(IContatoRepository repo)
+        private readonly ISessao _sessao;
+        public ContatoController(IContatoRepository repo, ISessao sessao)
         {
             _repo = repo;
+            _sessao = sessao;
         }
         public IActionResult Index()
         {
-            List<Contato> Contatos = _repo.BuscarContatos();
+            List<Contato> Contatos = _repo.BuscarContatos(_sessao.BuscarSessaoUsuario().Id);
             return View(Contatos);
         }
 
@@ -41,6 +44,7 @@ namespace SistemaContatos.Controllers
         public IActionResult EditarContato(Contato contato)
         {
             if (ModelState.IsValid) { 
+            contato.UsuarioId = _sessao.BuscarSessaoUsuario().Id;
             _repo.EditarContato(contato);
             TempData["Sucesso"] = "Contato editado com sucesso!";
             return RedirectToAction("Index");
@@ -80,6 +84,7 @@ namespace SistemaContatos.Controllers
         {       
                 if (ModelState.IsValid)
                 {
+                    Contato.UsuarioId = _sessao.BuscarSessaoUsuario().Id;
                     _repo.AddContato(Contato);
                     TempData["Sucesso"] = "Contato adicionado com sucesso!";
                     return RedirectToAction("Index");

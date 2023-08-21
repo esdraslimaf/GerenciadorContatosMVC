@@ -27,9 +27,9 @@ namespace SistemaContatos.Repository
             return ContatoDB;
         }
 
-        public List<Contato> BuscarContatos()
+        public List<Contato> BuscarContatos(int usuarioId)
         {
-            return _db.Contatos.ToList();
+            return _db.Contatos.Where(c => c.UsuarioId == usuarioId).ToList();
         }
 
         public void EditarContato(Contato contato)

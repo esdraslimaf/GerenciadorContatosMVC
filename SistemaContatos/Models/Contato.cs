@@ -18,5 +18,8 @@ namespace SistemaContatos.Models
         [Phone(ErrorMessage = "O telefone/celular informado é inválido!")]
         public string Telefone { get; set; }
 
+        public int? UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
+
     }
 }
