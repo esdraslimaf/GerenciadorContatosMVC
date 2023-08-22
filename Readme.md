@@ -8,7 +8,7 @@ Bem-vindo ao Gerenciador de Contatos, um projeto desenvolvido utilizando C#, ASP
 git clone https://github.com/esdraslimaf/GerenciadorContatosMVC.git
 ```
 2. Configure a conexão com o banco de dados no arquivo appsettings.json.
-4. Configure o SMTP para redefinição de senha no arquivo appsettings.json(O código está comentando com instruções e recomendações de como fazer... Isso é útil, pois ao realizar a redefinição da senha, uma nova senha aleatória será gerada e enviada para o usuário por meio de e-mail para garantir a segurança do acesso).
+4. Configure o SMTP para redefinição de senha no arquivo appsettings.json(O código está comentado com instruções e recomendações de como fazer... Isso é útil, pois ao realizar a redefinição da senha, uma nova senha aleatória será gerada e enviada para o usuário por meio de e-mail para garantir a segurança do acesso).
 5. Compile e execute o projeto.
 6. Na tela de login, insira suas credenciais ou clique em "Redefinir Senha" se necessário.
 Após o login bem-sucedido, explore as funcionalidades disponíveis de acordo com o tipo de conta.
